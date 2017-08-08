@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
-struct AlbumModel {
+struct Album {
     
-    let albumID: Int
-    let backgroundColor: UIColor
+    var albumID: Int
+    var photos: [Photo] {
+        didSet {
+            self.noOfPhotos = photos.count
+        }
+    }
+    
+    var noOfPhotos: Int
     
 }

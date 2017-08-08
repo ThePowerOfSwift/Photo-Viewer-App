@@ -9,13 +9,14 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import AlamofireImage
 
 public class APIClient {
     
 //    let url = "http://jsonplaceholder.typicode.com/photos"
     
     public static func getAlbumsFromAPI(from url: String, completion: @escaping ([String: Any], String?) -> Void) {
-        var albums = [String:Any]()
+        var albums: [String:Any] = [:]
         var errorResponse: String?
         
         Alamofire.request(url).responseJSON { (dataResponse) in
@@ -31,5 +32,12 @@ public class APIClient {
             }
          completion(albums, errorResponse)
         }
+    }
+    
+    
+    //MARK: TO DO Alamofire get image
+    public static func getImageFromURL(from url: String, completion: (UIImage) -> Void) {
+        
+        
     }
 }

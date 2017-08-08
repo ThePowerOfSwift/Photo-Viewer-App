@@ -11,6 +11,9 @@ import Foundation
 class AlbumsDataStore {
     
     static let sharedInstance = AlbumsDataStore()
+    let albums: [String:Any] = [:]
+    let photos: [Photo] = []
+    
     
     func getAlbumsFromAPIClient() {
         

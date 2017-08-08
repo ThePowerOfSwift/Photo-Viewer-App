@@ -11,7 +11,7 @@ import UIKit
 final class AlbumsTableViewCell: UITableViewCell {
     //static let nibName =
     
-    var viewModel: AlbumModel?
+    var viewModel: Album?
     
     override func awakeFromNib() {
         super.awakeFromNib()
