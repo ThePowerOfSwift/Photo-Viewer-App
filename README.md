@@ -1,2 +1,2 @@
-# Photo-App-Viewer
+# Photo-Viewer-App
 Photo App Viewer (TDD)
