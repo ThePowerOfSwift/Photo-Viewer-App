@@ -8,14 +8,21 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
-struct Photo {
+class Photo {
     
     var id: Int
     var title: String
-    var photoImageUrl: String
-    var photoImage: UIImage?
-    var thumbnailImageUrl: String
-    var thumbnailImage: UIImage?
+    var photoImageUrl: String?
+    var photoImageView: UIImageView? 
+    var thumbnailImageUrl: String?
+    var thumbnailImageView: UIImageView?
+    
+    
+    init(id: Int, title: String) {
+        self.id = id
+        self.title = title
+    }
     
 }

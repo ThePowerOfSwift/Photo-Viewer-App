@@ -19,7 +19,6 @@ class APIClientTest: XCTestCase {
         APIClient.getAlbumsFromAPI(from: testUrl) { (response, error) in
             XCTAssertNil(error, "Unexpected error occured: \(String(describing: error))")
             XCTAssertNotNil(response, "Downloaded response")
-            print(response)
             expect.fulfill()
         }
         

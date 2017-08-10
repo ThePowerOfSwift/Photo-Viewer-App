@@ -1,30 +1,46 @@
 PODS:
   - Alamofire (4.5.0)
-  - AlamofireImage (3.2.0):
-    - Alamofire (~> 4.1)
-  - FLAnimatedImage (1.0.12)
-  - NYTPhotoViewer (1.1.0):
-    - NYTPhotoViewer/AnimatedGifSupport (= 1.1.0)
-    - NYTPhotoViewer/Core (= 1.1.0)
-  - NYTPhotoViewer/AnimatedGifSupport (1.1.0):
-    - FLAnimatedImage (~> 1.0.8)
-    - NYTPhotoViewer/Core
-  - NYTPhotoViewer/Core (1.1.0)
+  - libwebp (0.6.0):
+    - libwebp/core (= 0.6.0)
+    - libwebp/dec (= 0.6.0)
+    - libwebp/demux (= 0.6.0)
+    - libwebp/dsp (= 0.6.0)
+    - libwebp/enc (= 0.6.0)
+    - libwebp/mux (= 0.6.0)
+    - libwebp/utils (= 0.6.0)
+    - libwebp/webp (= 0.6.0)
+  - libwebp/core (0.6.0):
+    - libwebp/webp
+  - libwebp/dec (0.6.0):
+    - libwebp/core
+  - libwebp/demux (0.6.0):
+    - libwebp/core
+  - libwebp/dsp (0.6.0):
+    - libwebp/core
+  - libwebp/enc (0.6.0):
+    - libwebp/core
+  - libwebp/mux (0.6.0):
+    - libwebp/core
+  - libwebp/utils (0.6.0):
+    - libwebp/core
+  - libwebp/webp (0.6.0)
+  - SDWebImage/Core (4.1.0)
+  - SDWebImage/WebP (4.1.0):
+    - libwebp
+    - SDWebImage/Core
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - AlamofireImage (~> 3.1)
-  - NYTPhotoViewer (~> 1.1.0)
+  - SDWebImage/WebP
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  NYTPhotoViewer: e80e8767f3780d2df37c6f72cbab15d6c7232911
+  libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 4ab418ff2f50081e333fca82693603a68d2688ca
+PODFILE CHECKSUM: 5625fa4b91b852685c1f55296b43440db8ef821b
 
 COCOAPODS: 1.1.1
