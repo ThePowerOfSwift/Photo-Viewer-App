@@ -17,10 +17,6 @@ Add additional notes about how to deploy this on a live system
 * [iCarousel] (https://github.com/nicklockwood/iCarousel) - Image Display
 * [SDWebImage] (https://github.com/rs/SDWebImage) - Asynchronous Image Download
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
 * **Jhantelle Belleza** - [JhantelleB](https://github.com/jhantelleb)
