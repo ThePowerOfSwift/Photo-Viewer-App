@@ -13,7 +13,6 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
 
     let store = AlbumsDataStore.sharedInstance
     var albums: [Album] = []
-    
     var chosenPhoto: Photo?
     
     override func viewDidLoad() {
@@ -27,6 +26,7 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
             }
         }
         self.tableView.delegate = self
+        self.tableView.contentMode = .scaleAspectFit
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,23 +43,24 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
         
         //for Display photo Protocol
-        cell.testDelegate = self
+        cell.displaySelectedPhotoDelegate = self
         
         let album = self.albums[indexPath.row]
         cell.albumsViewModel =
-        AlbumsTableViewCell.AlbumsViewModel( albumId: album.albumId )
+        AlbumTableViewCell.AlbumsViewModel( albumId: album.albumId )
         cell.photos = albums[indexPath.row].photos
-        cell.carouselView.reloadData()
-        
+        DispatchQueue.main.async {
+          cell.carouselView.reloadData()
+        }
         return cell
     }
     
     //MARK: Helper functions
     private func registerXib() {
-        let nibName = UINib(nibName: "AlbumsTableViewCell", bundle: nil)
+        let nibName = UINib(nibName: "AlbumTableViewCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "albumCell")
     }
     
@@ -71,7 +72,7 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! PhotoDetailViewController
         guard let photo = self.chosenPhoto else { return }
-        destinationVC.photo = photo
+        destinationVC.viewModel = DisplayPhoto.PhotoViewModel(photo: photo)
     }
     
 }

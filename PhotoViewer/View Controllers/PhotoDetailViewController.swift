@@ -12,18 +12,15 @@ import SDWebImage
 
 class PhotoDetailViewController: UIViewController {
 
-//    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var photoTitleLabel: UILabel!
-    @IBOutlet weak var albumNameLabel: UILabel!
-    @IBOutlet weak var imageView: UIView!
+    @IBOutlet weak var photoImageView: UIImageView!
     
     var photo: Photo?
     var displayPhoto = DisplayPhoto()
+    var viewModel: DisplayPhoto.PhotoViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let display = photo else { return }
-        displayPhoto.photoViewModel = DisplayPhoto.PhotoViewModel(photo: display)
         setupViews()
     }
 
@@ -32,9 +29,11 @@ class PhotoDetailViewController: UIViewController {
     }
 
     func setupViews() {
-        
+        guard let viewModel = viewModel else { return }
+        displayPhoto.photoViewModel = viewModel
         photoTitleLabel.text = displayPhoto.photoViewModel?.photo.title
-//        albumNameLabel.text = "Album \(photoViewModel?.photo.)"
+        guard let thumbnailImage = displayPhoto.thumbnailImageView else { return }
+        photoImageView.addSubview(thumbnailImage)
     }
 }
 

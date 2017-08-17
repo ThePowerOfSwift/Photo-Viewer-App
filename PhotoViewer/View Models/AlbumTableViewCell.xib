@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="17A330h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="307" id="KGk-i7-Jjw" customClass="AlbumTableViewCell" customModule="PhotoViewer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="307"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="416" height="306.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLB-H8-T7A" customClass="iCarousel">
+                        <rect key="frame" x="100" y="19" width="200" height="200"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="GgW-II-qeP"/>
+                            <constraint firstAttribute="width" constant="200" id="SA7-Fg-ziR"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3QV-vl-HLD">
+                        <rect key="frame" x="158" y="227" width="100" height="49.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm5-Ef-uzT">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="No of Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nX5-jS-y2S">
+                                <rect key="frame" x="0.0" y="29" width="100" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="3QV-vl-HLD" secondAttribute="bottom" constant="30" id="5YJ-cd-uY2"/>
+                    <constraint firstItem="3QV-vl-HLD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="158" id="8Xa-gE-LNa"/>
+                    <constraint firstItem="3QV-vl-HLD" firstAttribute="top" secondItem="ZLB-H8-T7A" secondAttribute="bottom" constant="8" id="WPg-hv-C45"/>
+                    <constraint firstItem="ZLB-H8-T7A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="X0J-NA-8GJ"/>
+                    <constraint firstItem="ZLB-H8-T7A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="rNK-dD-AYX"/>
+                    <constraint firstAttribute="trailing" secondItem="ZLB-H8-T7A" secondAttribute="trailing" constant="116" id="sNZ-qF-moi"/>
+                    <constraint firstAttribute="trailing" secondItem="3QV-vl-HLD" secondAttribute="trailing" constant="158" id="zfD-ED-qiU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="albumTitleLabel" destination="wm5-Ef-uzT" id="836-tQ-PqD"/>
+                <outlet property="carouselView" destination="ZLB-H8-T7A" id="uku-SG-nj1"/>
+                <outlet property="noOfPhotosLabel" destination="nX5-jS-y2S" id="bpo-tw-yS8"/>
+            </connections>
+            <point key="canvasLocation" x="51" y="155.5"/>
+        </tableViewCell>
+    </objects>
+</document>

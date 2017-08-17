@@ -21,21 +21,17 @@ final class DisplayPhoto {
 
     var photoViewModel: PhotoViewModel?
     
-    var thumbnailImageView: UIView? {
-        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+    var thumbnailImageView: UIImageView? {
         let imageView = UIImageView()
         guard let url = photoViewModel?.photo.thumbnailImageUrl else { return imageView }
-        let frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        let frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         imageView.frame = frame
         imageView.contentMode = .scaleAspectFit
         imageView.sd_setImage(with: URL(string: url))
-        tempView.addSubview(imageView)
-        return tempView
+        return imageView
     }
     
-    init() {
-        
-    }
+    init() { }
     
 }
 

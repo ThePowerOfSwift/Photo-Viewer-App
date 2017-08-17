@@ -1,32 +1,30 @@
 //
-//  AlbumsTableViewCell.swift
+//  TestTableViewCell.swift
 //  PhotoViewer
 //
-//  Created by Jhantelle Belleza on 8/7/17.
+//  Created by Jhantelle Belleza on 8/16/17.
 //  Copyright © 2017 JhantelleB. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
-
 protocol DisplaySelectedPhotoDelegate: class {
     func displaySelectedPhoto(_ photo: Photo)
 }
 
-final class AlbumsTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDataSource {
-    
-    //For Testing
-    static let nibName = "AlbumsTableViewCell"
+
+final class AlbumTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDataSource {
+
+    static let nibName = "AlbumTableViewCell"
     
     let store = AlbumsDataStore.sharedInstance
-    weak var testDelegate: DisplaySelectedPhotoDelegate?
+    weak var displaySelectedPhotoDelegate: DisplaySelectedPhotoDelegate?
     
     struct AlbumsViewModel {
         var albumId: Int
         var noOfPhotos: Int = 0
         
         init(albumId: Int) {
-         self.albumId = albumId
+            self.albumId = albumId
         }
     }
     
@@ -52,15 +50,16 @@ final class AlbumsTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDa
         carouselView.delegate = self
         carouselView.dataSource = self
         carouselView.type = .rotary
+        carouselView.contentMode = .scaleAspectFit
     }
-
+    
     func numberOfItems(in carousel: iCarousel) -> Int {
         return photos.count
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         
-        //Create UIImageView
+        //Create UIImageView for Carousel
         let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         
         let imageView = UIImageView()
@@ -75,15 +74,15 @@ final class AlbumsTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDa
     
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         if option == .spacing {
-            return value * 1.0
+            return value * 1.1
         }
         return value
     }
-
+    
     //For display photo detail VC
     func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
         let photo = photos[index]
-        self.testDelegate?.displaySelectedPhoto(photo)
+        self.displaySelectedPhotoDelegate?.displaySelectedPhoto(photo)
     }
     
     func carousel(_ carousel: iCarousel, shouldSelectItemAt index: Int) -> Bool {
@@ -91,5 +90,3 @@ final class AlbumsTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDa
     }
     
 }
-
-

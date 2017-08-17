@@ -31,4 +31,14 @@ public class APIClient {
          completion(photos, errorResponse)
         }
     }
+    
+    
+   /* public static func getPhoto(from url: String, completion: @escaping (_ data: Data?,_ response: URLResponse?,_ error: Error?) -> Void) {
+        //Alamofire.request(url).response
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            completion(data, response, error)
+            }.resume()
+     }
+     */
+        
 }

@@ -11,15 +11,15 @@ import SDWebImage
 
 extension UIImageView {
     
-    func loadImage(using urlString: String) {
+   func loadImage(using urlString: String) {
         let url = URL(string: urlString)
         let imageView = UIImageView()
         imageView.sd_setImage(with: url)
     }
-    
 }
 
-extension AlbumsTableViewCell.AlbumsViewModel {
+//extension AlbumsTableViewCell.AlbumsViewModel {
+extension AlbumTableViewCell.AlbumsViewModel {
     
     var albumIdTextDisplay: String {
         let formatString = NSLocalizedString("Album %@", comment: "...")
