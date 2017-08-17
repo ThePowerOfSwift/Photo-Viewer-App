@@ -15,13 +15,13 @@ class AlbumsDataStore {
     
     var albums: [Int:[Photo]] = [:]
     
-    func getAlbumsFromAPIClient(completion: @escaping ([Album]) -> ()) {
+    public func getAlbumsFromAPIClient(completion: @escaping ([Album]) -> ()) {
         APIClient.getAlbumsFromAPI(from: Constants.defaultURL) { (photos, error) in
             completion(self.convertKeysToArray(albums: self.parse(photos)))
         }
     }
     
-    func parse(_ items: [[String:Any]]) -> [Int:[Photo]] {
+    fileprivate func parse(_ items: [[String:Any]]) -> [Int:[Photo]] {
         
         for item in items {
             //TODO: Object mapper
@@ -44,7 +44,7 @@ class AlbumsDataStore {
         return albums
     }
     
-    func convertKeysToArray(albums: [Int:[Photo]]) -> [Album] {
+    fileprivate func convertKeysToArray(albums: [Int:[Photo]]) -> [Album] {
         let keys = Array(albums.keys)
         let sortedKeys = keys.sorted()
         var albumArray: [Album] = []

@@ -20,7 +20,7 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
         registerXib()
         
         OperationQueue.main.addOperation {
-            self.store.getAlbumsFromAPIClient { data in
+            self.store.getAlbumsFromAPIClient { [unowned self] data in
                 self.albums = data
                 self.tableView.reloadData()
             }
