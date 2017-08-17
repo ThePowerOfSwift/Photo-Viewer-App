@@ -12,17 +12,14 @@ import UIKit
 struct Album {
     
     var albumId: Int
-    var photos: [Photo] {
-        willSet {
+    var photos: [Photo] = [] {
+        didSet {
             self.noOfPhotos = self.photos.count
         }
     }
-    
     var noOfPhotos: Int = 0
     
-    init(albumId: Int, photos: [Photo]) {
+    init(albumId: Int) {
         self.albumId = albumId
-        self.photos = photos
     }
-    
 }

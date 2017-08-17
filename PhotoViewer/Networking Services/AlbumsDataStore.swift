@@ -51,7 +51,8 @@ class AlbumsDataStore {
         
         for key in sortedKeys {
             guard let photos = albums[key] else { return [] }
-            let album = Album(albumId: key, photos: photos)
+            var album = Album(albumId: key)
+            album.photos = photos
             albumArray.append(album)
         }
         

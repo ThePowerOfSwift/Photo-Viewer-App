@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Nimble.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PhotoViewer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-PhotoViewerTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Quick.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,12 +47,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>630DD8DDD660F17030043A003B460CB9</key>
+		<key>035E6DF2C3A4B45423E0635BE522D823</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>71FCFB0D0FCF839A765631F78AFDC475</key>
+		<key>17F18964117CFD8C901AB85F1196E18E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>334A332F5CD5E57787EB87ACC9ABE5B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F636E845E532C0EB48BB4938E6D59D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>630DD8DDD660F17030043A003B460CB9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,12 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A564D39E7340FAB67C098167EDD724A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A81F76A1CAFF57249C06E8128E40182B</key>
+		<key>BB41E320E560570EED438E480CAB5EE7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

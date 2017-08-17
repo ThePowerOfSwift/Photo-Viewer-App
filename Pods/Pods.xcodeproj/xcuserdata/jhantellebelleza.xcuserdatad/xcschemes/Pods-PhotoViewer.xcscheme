@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71FCFB0D0FCF839A765631F78AFDC475"
+               BlueprintIdentifier = "3F636E845E532C0EB48BB4938E6D59D0"
                BuildableName = "Pods_PhotoViewer.framework"
                BlueprintName = "Pods-PhotoViewer"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "71FCFB0D0FCF839A765631F78AFDC475"
+            BlueprintIdentifier = "3F636E845E532C0EB48BB4938E6D59D0"
             BuildableName = "Pods_PhotoViewer.framework"
             BlueprintName = "Pods-PhotoViewer"
             ReferencedContainer = "container:Pods.xcodeproj">

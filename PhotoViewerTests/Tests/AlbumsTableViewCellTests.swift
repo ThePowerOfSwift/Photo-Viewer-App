@@ -11,13 +11,13 @@ import XCTest
 
 class AlbumsTableViewCellTests: XCTestCase {
     
-    var cell: AlbumsTableViewCell?
+    var cell: AlbumTableViewCell?
     
     override func setUp() {
         super.setUp()
         
         let bundle = Bundle(for: self.classForCoder)
-        guard let nib = bundle.loadNibNamed("AlbumsTableViewCell", owner: nil, options: nil)?.first as? AlbumsTableViewCell else { return }
+        guard let nib = bundle.loadNibNamed("AlbumsTableViewCell", owner: nil, options: nil)?.first as? AlbumTableViewCell else { return }
         cell = nib
     }
     
@@ -27,7 +27,7 @@ class AlbumsTableViewCellTests: XCTestCase {
     
     func testStringExtensions() {
         
-        var albumsViewModel = AlbumsTableViewCell.AlbumsViewModel(albumId: 23)
+        var albumsViewModel = AlbumTableViewCell.AlbumsViewModel(albumId: 23)
         albumsViewModel.noOfPhotos = 2
         
         cell?.albumTitleLabel.text = albumsViewModel.albumIdTextDisplay

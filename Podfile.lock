@@ -24,6 +24,8 @@ PODS:
   - libwebp/utils (0.6.0):
     - libwebp/core
   - libwebp/webp (0.6.0)
+  - Nimble (7.0.1)
+  - Quick (1.1.0)
   - SDWebImage/Core (4.1.0)
   - SDWebImage/WebP (4.1.0):
     - libwebp
@@ -32,15 +34,19 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Nimble
+  - Quick
   - SDWebImage/WebP
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 5625fa4b91b852685c1f55296b43440db8ef821b
+PODFILE CHECKSUM: 4dad229b046a541800298ed87e4814a403915c35
 
 COCOAPODS: 1.1.1
