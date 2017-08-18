@@ -1,3 +1,4 @@
+
 //
 //  AlbumsDataStore.swift
 //  PhotoViewer
@@ -11,23 +12,18 @@ import SDWebImage
 
 class AlbumsDataStore {
     
-    enum AlbumDataResult {
-        case Success([Album])
-        case Failure(Error)
-    }
- 
-    public func getAlbumsFromAPIClient(completion: @escaping (AlbumDataResult) -> ()) {
-        APIClient.getAlbumsFromAPI(from: Constants.defaultURL) { (photos, error) in
-            if error != nil {
-              completion(AlbumDataResult.Failure(error as! Error))
-            } else {
-              completion(AlbumDataResult.Success(self.convertKeysToArray(albums: self.parse(photos))))
+    public func getAlbumsFromAPIClient(completion: @escaping ([Album], Error?) -> Void) {
+        APIClient.getAlbumsFromAPI(from: Constants.defaultURL) { (albumDataResult) in
+            switch albumDataResult {
+            case .Success(let photos):
+                completion(self.convertKeysToArray(albums: self.parse(photos)), nil)
+            case .Failure(let error):
+                completion([], error)
             }
-            
         }
     }
     
-    fileprivate func parse(_ items: [[String:Any]]) -> [Int:[Photo]] {
+    func parse(_ items: [[String:Any]]) -> [Int:[Photo]] {
         var albums: [Int:[Photo]] = [:]
         
         for item in items {
@@ -50,7 +46,7 @@ class AlbumsDataStore {
         return albums
     }
     
-    fileprivate func convertKeysToArray(albums: [Int:[Photo]]) -> [Album] {
+    func convertKeysToArray(albums: [Int:[Photo]]) -> [Album] {
         let keys = Array(albums.keys)
         let sortedKeys = keys.sorted()
         var albumArray: [Album] = []
@@ -61,8 +57,6 @@ class AlbumsDataStore {
             album.photos = photos
             albumArray.append(album)
         }
-        
         return albumArray
     }
-
 }

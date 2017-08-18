@@ -24,6 +24,13 @@ PODS:
   - libwebp/utils (0.6.0):
     - libwebp/core
   - libwebp/webp (0.6.0)
+  - Mockingjay (2.0.0):
+    - Mockingjay/Core (= 2.0.0)
+    - Mockingjay/XCTest (= 2.0.0)
+  - Mockingjay/Core (2.0.0):
+    - URITemplate (~> 2.0)
+  - Mockingjay/XCTest (2.0.0):
+    - Mockingjay/Core
   - Nimble (7.0.1)
   - Quick (1.1.0)
   - SDWebImage/Core (4.1.0)
@@ -31,9 +38,11 @@ PODS:
     - libwebp
     - SDWebImage/Core
   - SwiftyJSON (3.1.4)
+  - URITemplate (2.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Mockingjay
   - Nimble
   - Quick
   - SDWebImage/WebP
@@ -42,11 +51,13 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
+  Mockingjay: 7122a3fc0597aa63438e4cd9b71b7bc8aac05b87
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  URITemplate: 720b8a56a281494d7c2d31ee33183986eaed2c67
 
-PODFILE CHECKSUM: 9ee34fb3663cb8b8e7a19a24db96491751fb42fc
+PODFILE CHECKSUM: e0493e626133b00dd13068fc111352e60353d072
 
 COCOAPODS: 1.1.1

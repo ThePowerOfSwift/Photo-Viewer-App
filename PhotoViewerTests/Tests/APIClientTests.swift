@@ -11,7 +11,7 @@ import XCTest
 
 class APIClientTest: XCTestCase {
     
-    //Mock Test for API Calls
+   /* //Mock Test for API Calls
     func testGetAlbumsFromAPI() {
         let expect = expectation(description: "Download succeeds")
         let testUrl = "http://httpbin.org/anything"
@@ -25,7 +25,7 @@ class APIClientTest: XCTestCase {
         waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Test timed out. \(String(describing: error?.localizedDescription))")
         }
-    }
+    }*/
     
     
     

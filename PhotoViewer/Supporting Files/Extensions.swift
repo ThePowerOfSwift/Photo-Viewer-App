@@ -9,16 +9,6 @@
 import Foundation
 import SDWebImage
 
-extension UIImageView {
-    
-   func loadImage(using urlString: String) {
-        let url = URL(string: urlString)
-        let imageView = UIImageView()
-        imageView.sd_setImage(with: url)
-    }
-}
-
-//extension AlbumsTableViewCell.AlbumsViewModel {
 extension AlbumTableViewCell.AlbumsViewModel {
     
     var albumIdTextDisplay: String {
@@ -34,6 +24,10 @@ extension AlbumTableViewCell.AlbumsViewModel {
         let formatString = NSLocalizedString("%@ \(photoDisplayString)", comment: "...")
         return String(format: formatString, String(noOfPhotos))
     }
+    
+}
+
+extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
     
 }
 

@@ -13,13 +13,10 @@ import Nimble
 
 class AlbumsTableViewControllerSpec: QuickSpec {
     
-    class FakeAlbumsService: AlbumsDataStore {
-        var getAlbumsWasCalled = false
-        var fakeAlbumsResult: AlbumsDataStore.AlbumDataResult!
+    class FakeAlbumService: AlbumFetching {
         
-        override func getAlbumsFromAPIClient(completion: @escaping (AlbumDataResult) -> ()) {
-            getAlbumsWasCalled = true
-            completion(fakeAlbumsResult)
+        func getAlbumsFromAPIClient(completion: @escaping (AlbumDataResult) -> Void) {
+            completion(AlbumDataResult.Success([]))
         }
     }
     
@@ -35,21 +32,20 @@ class AlbumsTableViewControllerSpec: QuickSpec {
             UIApplication.shared.keyWindow!.rootViewController = navigationController
             let _ = navigationController.view
             let _ = albumsTableViewController.view
-            
-            describe("getAlbums") {
-                context("Albums fetched successfully") {
-                    it("Gets the album from the data source") {
-                       let fakeAlbumsService = FakeAlbumsService()
-                       let albums = [Album(albumId: 1), Album(albumId: 2), Album(albumId: 3)]
-                        fakeAlbumsService.fakeAlbumsResult = AlbumsDataStore.AlbumDataResult.Success(albums)
-                        
-                        expect(fakeAlbumsService.getAlbumsWasCalled).to(beTruthy())
-                        //expect(albums).to(albumsTableViewController.albums)
-                    }
+        }
+        
+        describe("getAlbums") {
+            context("Albums fetched successfully") {
+                it("Gets the album from the data source") {
+                    
+                    _ = FakeAlbumService()
+                    
+                    let albums = [Album(albumId: 1), Album(albumId: 2), Album(albumId: 3)]
+                    //  albumsTableViewController.getAlbums(albumService: fakeAlbumService)
+                    expect(albums.count).to(equal(albumsTableViewController.albums?.count))
                 }
             }
         }
     }
-    
 }
 

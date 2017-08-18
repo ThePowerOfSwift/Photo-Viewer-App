@@ -12,8 +12,12 @@ protocol DisplaySelectedPhotoDelegate: class {
     func displaySelectedPhoto(_ photo: Photo)
 }
 
-final class AlbumTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDataSource {
+final class AlbumTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var carouselView: iCarousel!
+    @IBOutlet weak var albumTitleLabel: UILabel!
+    @IBOutlet weak var noOfPhotosLabel: UILabel!
+    
     static let nibName = "AlbumTableViewCell"
     weak var displaySelectedPhotoDelegate: DisplaySelectedPhotoDelegate?
     
@@ -39,11 +43,6 @@ final class AlbumTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDat
         }
     }
     
-    @IBOutlet weak var carouselView: iCarousel!
-    @IBOutlet weak var albumTitleLabel: UILabel!
-    @IBOutlet weak var noOfPhotosLabel: UILabel!
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         carouselView.delegate = self
@@ -51,6 +50,10 @@ final class AlbumTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDat
         carouselView.type = .rotary
         carouselView.contentMode = .scaleAspectFit
     }
+    
+}
+
+extension AlbumTableViewCell: iCarouselDelegate, iCarouselDataSource {
     
     func numberOfItems(in carousel: iCarousel) -> Int {
         return photos.count
@@ -87,5 +90,4 @@ final class AlbumTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDat
     func carousel(_ carousel: iCarousel, shouldSelectItemAt index: Int) -> Bool {
         return true
     }
-    
 }

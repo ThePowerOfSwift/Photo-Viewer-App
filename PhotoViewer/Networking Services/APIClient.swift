@@ -11,11 +11,19 @@ import Alamofire
 import SwiftyJSON
 import SDWebImage
 
-public class APIClient {
+protocol FetchData {
+    static func getAlbumsFromAPI(from url: String, completion: @escaping (AlbumDataResult) -> Void)
+}
+
+enum AlbumDataResult {
+    case Success([[String:Any]])
+    case Failure(Error)
+}
+
+
+public class APIClient: FetchData {
     
-    public static func getAlbumsFromAPI(from url: String, completion: @escaping ([[String: Any]], String?) -> Void) {
-        var photos: [[String:Any]] = []
-        var errorResponse: String?
+    static func getAlbumsFromAPI(from url: String, completion: @escaping (AlbumDataResult) -> Void) {
         
         Alamofire.request(url).responseJSON { (dataResponse) in
             switch dataResponse.result {
@@ -23,22 +31,11 @@ public class APIClient {
                 guard let data = JSON(value).arrayObject as? [[String:Any]] else {
                     return
                 }
-                photos = data
+                completion(AlbumDataResult.Success(data))
             case .failure(let error):
-                print(error.localizedDescription)
-                errorResponse = error.localizedDescription
+                completion(AlbumDataResult.Failure(error))
             }
-         completion(photos, errorResponse)
         }
     }
     
-    
-   /* public static func getPhoto(from url: String, completion: @escaping (_ data: Data?,_ response: URLResponse?,_ error: Error?) -> Void) {
-        //Alamofire.request(url).response
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            completion(data, response, error)
-            }.resume()
-     }
-     */
-        
 }
