@@ -8,12 +8,12 @@ target 'PhotoViewer' do
     pod 'Alamofire', '~> 4.4'
     pod 'SDWebImage/WebP'
     pod 'SwiftyJSON'
-    pod 'Quick'
-    pod 'Nimble'
 
   # Pods for PhotoViewer
   target 'PhotoViewerTests' do
     inherit! :search_paths
+    pod 'Quick'
+    pod 'Nimble'
   end
 
 end

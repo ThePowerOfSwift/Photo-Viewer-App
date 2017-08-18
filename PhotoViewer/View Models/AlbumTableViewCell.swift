@@ -7,16 +7,14 @@
 //
 
 import UIKit
+
 protocol DisplaySelectedPhotoDelegate: class {
     func displaySelectedPhoto(_ photo: Photo)
 }
 
-
 final class AlbumTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDataSource {
 
     static let nibName = "AlbumTableViewCell"
-    
-    let store = AlbumsDataStore.sharedInstance
     weak var displaySelectedPhotoDelegate: DisplaySelectedPhotoDelegate?
     
     struct AlbumsViewModel {
@@ -44,6 +42,7 @@ final class AlbumTableViewCell: UITableViewCell, iCarouselDelegate, iCarouselDat
     @IBOutlet weak var carouselView: iCarousel!
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var noOfPhotosLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

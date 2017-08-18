@@ -11,20 +11,26 @@ import SDWebImage
 
 class AlbumsDataStore {
     
-    static let sharedInstance = AlbumsDataStore()
-    
-    var albums: [Int:[Photo]] = [:]
-    
-    public func getAlbumsFromAPIClient(completion: @escaping ([Album]) -> ()) {
+    enum AlbumDataResult {
+        case Success([Album])
+        case Failure(Error)
+    }
+ 
+    public func getAlbumsFromAPIClient(completion: @escaping (AlbumDataResult) -> ()) {
         APIClient.getAlbumsFromAPI(from: Constants.defaultURL) { (photos, error) in
-            completion(self.convertKeysToArray(albums: self.parse(photos)))
+            if error != nil {
+              completion(AlbumDataResult.Failure(error as! Error))
+            } else {
+              completion(AlbumDataResult.Success(self.convertKeysToArray(albums: self.parse(photos))))
+            }
+            
         }
     }
     
     fileprivate func parse(_ items: [[String:Any]]) -> [Int:[Photo]] {
+        var albums: [Int:[Photo]] = [:]
         
         for item in items {
-            //TODO: Object mapper
             guard let albumId = item["albumId"] as? Int else { return [:] }
             guard let id = item["id"] as? Int else { return [:] }
             guard let title = item["title"] as? String else { return [:] }
@@ -58,6 +64,5 @@ class AlbumsDataStore {
         
         return albumArray
     }
-    
-    
+
 }

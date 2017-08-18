@@ -11,19 +11,15 @@ import SDWebImage
 
 class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDelegate {
 
-    let store = AlbumsDataStore.sharedInstance
-    var albums: [Album] = []
+    //var dataSource: [Album]?
+    var albums: [Album]?
     var chosenPhoto: Photo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerXib()
-        
         OperationQueue.main.addOperation {
-            self.store.getAlbumsFromAPIClient { [unowned self] data in
-                self.albums = data
-                self.tableView.reloadData()
-            }
+            self.getAlbums()
         }
         self.tableView.delegate = self
         self.tableView.contentMode = .scaleAspectFit
@@ -39,7 +35,8 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.albums.count
+        guard let unwrappedAlbum = self.albums else { return 0 }
+        return unwrappedAlbum.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,11 +44,11 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
         
         //for Display photo Protocol
         cell.displaySelectedPhotoDelegate = self
-        
-        let album = self.albums[indexPath.row]
+        guard let unwrappedAlbum = self.albums else { return cell }
+        let album = unwrappedAlbum[indexPath.row]
         cell.albumsViewModel =
         AlbumTableViewCell.AlbumsViewModel( albumId: album.albumId )
-        cell.photos = albums[indexPath.row].photos
+        cell.photos = album.photos
         DispatchQueue.main.async {
           cell.carouselView.reloadData()
         }
@@ -75,4 +72,20 @@ class AlbumsTableViewController: UITableViewController, DisplaySelectedPhotoDele
         destinationVC.viewModel = DisplayPhoto.PhotoViewModel(photo: photo)
     }
     
+    
+    // Used Dependency Injection for testing
+    fileprivate func getAlbums(albumService: AlbumsDataStore = AlbumsDataStore()) {
+        albumService.getAlbumsFromAPIClient { [unowned self] (albumsDataResult) -> Void in
+            switch (albumsDataResult) {
+            case .Success(let albums):
+                self.albums = albums
+                self.tableView.reloadData()
+            case .Failure(let error):
+                let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
 }
