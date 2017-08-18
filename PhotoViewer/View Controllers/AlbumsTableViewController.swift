@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import PinpointKit
 
 class AlbumsTableViewController: UITableViewController {
     
@@ -15,7 +16,14 @@ class AlbumsTableViewController: UITableViewController {
     var chosenPhoto: Photo?
     var albumService = AlbumsDataStore()
     
+    fileprivate let pinpointKit = PinpointKit(feedbackRecipients: ["jhantelle.belleza@gmail.com"])
+    
     @IBOutlet weak var navBar: UINavigationItem!
+    
+    @IBAction func feedback(_ sender: Any) {
+        pinpointKit.show(from: self)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +31,10 @@ class AlbumsTableViewController: UITableViewController {
         self.setup()
         self.getAlbums()
         
+        tableView.tableFooterView = UIView()
+        
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -41,8 +51,9 @@ class AlbumsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.reuseIdentifier, for: indexPath) as! AlbumTableViewCell
         
-        //for Display photo protocol
+        //Display photo protocol
         cell.displaySelectedPhotoDelegate = self
+        
         let album = self.albums[indexPath.row]
         cell.albumsViewModel =
             AlbumTableViewCell.AlbumsViewModel( albumId: album.albumId )
@@ -63,23 +74,27 @@ class AlbumsTableViewController: UITableViewController {
 //MARK: AlbumsTableViewController
 extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
     
-    //MARK: Helper functions
+    //MARK: Register Xib
     fileprivate func registerXib() {
         let nibName = UINib(nibName: Constants.albumTableViewCellNibName, bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: Constants.reuseIdentifier)
     }
     
     fileprivate func setup() {
+        //MARK: TableView delegate and datasource
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.contentMode = .scaleAspectFit
         
+        //MARK: Navigation Title View
         let imageView = UIImageView(image: UIImage(named: Constants.lickabilityIconName))
-        navBar.titleView = imageView
-        navBar.titleView?.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40)
-        navBar.titleView?.contentMode = .scaleAspectFit
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 40))
         
-        //MARK: Refresh Control
+        imageView.frame = titleView.bounds
+        titleView.addSubview(imageView)
+        navBar.titleView = titleView
+        
+        //MARK: Refresh Controller
         self.refreshControl?.addTarget(self, action: #selector(self.refreshTableView(_:)), for: .valueChanged )
     }
     
@@ -89,7 +104,7 @@ extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
         refreshControl.endRefreshing()
     }
     
-    //MARK: Delegate Implementation
+    //MARK: - Delegate Implementation
     func displaySelectedPhoto(_ photo: Photo) {
         self.chosenPhoto = photo
         self.performSegue(withIdentifier: Constants.showPhotoSegue, sender: nil)

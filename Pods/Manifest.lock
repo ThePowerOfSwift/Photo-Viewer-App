@@ -32,6 +32,9 @@ PODS:
   - Mockingjay/XCTest (2.0.0):
     - Mockingjay/Core
   - Nimble (7.0.1)
+  - PinpointKit (1.0.0):
+    - PinpointKit/Core (= 1.0.0)
+  - PinpointKit/Core (1.0.0)
   - Quick (1.1.0)
   - SDWebImage/Core (4.1.0)
   - SDWebImage/WebP (4.1.0):
@@ -44,6 +47,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - Mockingjay
   - Nimble
+  - PinpointKit (~> 1.0)
   - Quick
   - SDWebImage/WebP
   - SwiftyJSON
@@ -53,11 +57,12 @@ SPEC CHECKSUMS:
   libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
   Mockingjay: 7122a3fc0597aa63438e4cd9b71b7bc8aac05b87
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  PinpointKit: fd9421e22c6567f2bec16d1f39fc70a3fce5df87
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   URITemplate: 720b8a56a281494d7c2d31ee33183986eaed2c67
 
-PODFILE CHECKSUM: e0493e626133b00dd13068fc111352e60353d072
+PODFILE CHECKSUM: 80b2617209e901a13ebc9c917616e06ddb286b8a
 
 COCOAPODS: 1.1.1

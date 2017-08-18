@@ -40,7 +40,14 @@
                             <outlet property="delegate" destination="LKS-GM-Q08" id="ZsP-wu-amU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="EHX-bv-zEO"/>
+                    <navigationItem key="navigationItem" id="EHX-bv-zEO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="camera" id="XHS-zi-CB2">
+                            <color key="tintColor" red="0.7494661212" green="0.15196838970000001" blue="0.17305430769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="feedback:" destination="LKS-GM-Q08" id="OPJ-CG-cJS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0QM-Ca-cOc">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
