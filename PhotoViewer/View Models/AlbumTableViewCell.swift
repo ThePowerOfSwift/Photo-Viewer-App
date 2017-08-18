@@ -18,12 +18,14 @@ final class AlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var noOfPhotosLabel: UILabel!
     
-    static let nibName = "AlbumTableViewCell"
+    static let nibName = Constants.albumTableViewCellNibName
+    
     weak var displaySelectedPhotoDelegate: DisplaySelectedPhotoDelegate?
     
     struct AlbumsViewModel {
         var albumId: Int
         var noOfPhotos: Int = 0
+        var photoDisplay: String = ""
         
         init(albumId: Int) {
             self.albumId = albumId
@@ -43,6 +45,8 @@ final class AlbumTableViewCell: UITableViewCell {
         }
     }
     
+    
+    //MARK: Table View Cell Awake From Nib
     override func awakeFromNib() {
         super.awakeFromNib()
         carouselView.delegate = self
@@ -53,6 +57,7 @@ final class AlbumTableViewCell: UITableViewCell {
     
 }
 
+//MARK: AlbumTableViewCell (iCarousel Implementation)
 extension AlbumTableViewCell: iCarouselDelegate, iCarouselDataSource {
     
     func numberOfItems(in carousel: iCarousel) -> Int {
@@ -61,7 +66,7 @@ extension AlbumTableViewCell: iCarouselDelegate, iCarouselDataSource {
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         
-        //Create UIImageView for Carousel
+        //MARK: UIImageView for Carousel
         let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         
         let imageView = UIImageView()
@@ -70,6 +75,17 @@ extension AlbumTableViewCell: iCarouselDelegate, iCarouselDataSource {
         imageView.frame = frame
         imageView.contentMode = .scaleAspectFit
         imageView.sd_setImage(with: URL(string: image))
+        
+        //MARK: Label for image
+        let label = UILabel(frame:  CGRect(x: 0, y: 180, width: 50, height: 10))
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        label.font = label.font.withSize(14)
+        label.textColor = UIColor.darkGray  
+        label.tag = 1
+        label.text = String(photos[index].id)
+        imageView.addSubview(label)
+        
         tempView.addSubview(imageView)
         return tempView
     }
@@ -91,3 +107,8 @@ extension AlbumTableViewCell: iCarouselDelegate, iCarouselDataSource {
         return true
     }
 }
+
+
+
+
+

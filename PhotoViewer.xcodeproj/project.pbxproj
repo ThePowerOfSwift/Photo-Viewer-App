@@ -196,10 +196,10 @@
 		835C6EB51F3A42C6006F39E1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				83D97D9A1F474F3300EDE5C8 /* GetAlbumsSuccess.json */,
 				83E6D8E61F46A07800061C7E /* AlbumsDataStoreSpec.swift */,
 				833A2F701F3B730500FE390C /* AlbumsSpec.swift */,
 				83D97D9E1F47508800EDE5C8 /* AlbumViewModelSpec.swift */,
-				83D97D9A1F474F3300EDE5C8 /* GetAlbumsSuccess.json */,
 				8329D6861F45F2D900A0D436 /* PhotoSpec.swift */,
 				83D68FEF1F475A7C007EF5CF /* PhotoViewModelSpec.swift */,
 			);

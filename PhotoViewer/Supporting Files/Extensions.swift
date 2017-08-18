@@ -9,10 +9,11 @@
 import Foundation
 import SDWebImage
 
+//MARK: AlbumTableViewCell's Albums View Model
 extension AlbumTableViewCell.AlbumsViewModel {
     
     var albumIdTextDisplay: String {
-        let formatString = NSLocalizedString("Album %@", comment: "...")
+        let formatString = NSLocalizedString("album %@", comment: "...")
         return String(format: formatString, String(albumId))
     }
     
@@ -23,12 +24,9 @@ extension AlbumTableViewCell.AlbumsViewModel {
         }
         let formatString = NSLocalizedString("%@ \(photoDisplayString)", comment: "...")
         return String(format: formatString, String(noOfPhotos))
-    }
-    
+    }    
 }
 
-extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
-    
-}
+
 
 

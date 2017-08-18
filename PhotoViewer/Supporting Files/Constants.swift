@@ -11,5 +11,8 @@ import Foundation
 final class Constants {
     
     static let defaultURL = "http://jsonplaceholder.typicode.com/photos"
+    static let albumTableViewCellNibName = "AlbumTableViewCell"
+    static let reuseIdentifier = "albumCell"
+    static let showPhotoSegue = "showPhoto"
     
 }

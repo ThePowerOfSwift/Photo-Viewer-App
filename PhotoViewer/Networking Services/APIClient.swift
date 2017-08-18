@@ -22,7 +22,6 @@ enum AlbumDataResult {
 
 
 public class APIClient: FetchData {
-    
     static func getAlbumsFromAPI(from url: String, completion: @escaping (AlbumDataResult) -> Void) {
         
         Alamofire.request(url).responseJSON { (dataResponse) in
