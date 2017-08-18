@@ -15,28 +15,14 @@ class AlbumsTableViewController: UITableViewController {
     var chosenPhoto: Photo?
     var albumService = AlbumsDataStore()
     
-    
     @IBOutlet weak var navBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerXib()
-        //OperationQueue.main.addOperation {
-            self.getAlbums()
-        //}
+        self.registerXib()
+        self.setup()
+        self.getAlbums()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.contentMode = .scaleAspectFit
-        
-        
-        let imageView = UIImageView(image: UIImage(named: "lickabilityIcon"))
-        navBar.titleView = imageView
-        navBar.titleView?.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40)
-        navBar.titleView?.contentMode = .scaleAspectFit
-        
-        //MARK: Refresh Control
-        self.refreshControl?.addTarget(self, action: #selector(self.refreshTableView(_:)), for: .valueChanged )
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,7 +41,7 @@ class AlbumsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.reuseIdentifier, for: indexPath) as! AlbumTableViewCell
         
-        //for Display photo Protocol
+        //for Display photo protocol
         cell.displaySelectedPhotoDelegate = self
         let album = self.albums[indexPath.row]
         cell.albumsViewModel =
@@ -67,24 +53,46 @@ class AlbumsTableViewController: UITableViewController {
         return cell
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! PhotoDetailViewController
         guard let photo = self.chosenPhoto else { return }
         destinationVC.viewModel = DisplayPhoto.PhotoViewModel(photo: photo)
     }
-    
+}
+
+//MARK: AlbumsTableViewController
+extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
     
     //MARK: Helper functions
-    private func registerXib() {
+    fileprivate func registerXib() {
         let nibName = UINib(nibName: Constants.albumTableViewCellNibName, bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: Constants.reuseIdentifier)
     }
     
+    fileprivate func setup() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.contentMode = .scaleAspectFit
+        
+        let imageView = UIImageView(image: UIImage(named: Constants.lickabilityIconName))
+        navBar.titleView = imageView
+        navBar.titleView?.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40)
+        navBar.titleView?.contentMode = .scaleAspectFit
+        
+        //MARK: Refresh Control
+        self.refreshControl?.addTarget(self, action: #selector(self.refreshTableView(_:)), for: .valueChanged )
+    }
     
+    //MARK: Refresh Table View
     func refreshTableView(_ refreshControl: UIRefreshControl) {
         self.getAlbums()
         refreshControl.endRefreshing()
+    }
+    
+    //MARK: Delegate Implementation
+    func displaySelectedPhoto(_ photo: Photo) {
+        self.chosenPhoto = photo
+        self.performSegue(withIdentifier: Constants.showPhotoSegue, sender: nil)
     }
     
     //MARK: - Get Albums
@@ -102,16 +110,5 @@ class AlbumsTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-    }
-    
-}
-
-//MARK: AlbumsTableViewController
-extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
-    
-    func displaySelectedPhoto(_ photo: Photo) {
-        
-        self.chosenPhoto = photo
-        self.performSegue(withIdentifier: Constants.showPhotoSegue, sender: nil)
     }
 }

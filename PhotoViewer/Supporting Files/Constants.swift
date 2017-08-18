@@ -15,4 +15,7 @@ final class Constants {
     static let reuseIdentifier = "albumCell"
     static let showPhotoSegue = "showPhoto"
     
+    
+    static let lickabilityIconName = "lickabilityIcon"
+    
 }
