@@ -13,7 +13,6 @@ class PhotoDetailViewController: UIViewController {
 
     @IBOutlet weak var photoTitleLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet var detailView: UIView!
     @IBOutlet weak var photoIdDisplay: UILabel!
     
     @IBAction func closePopUp(_ sender: Any) {
@@ -43,12 +42,6 @@ class PhotoDetailViewController: UIViewController {
         
         guard let thumbnailImage = displayPhoto.thumbnailImageView else { return }
         photoImageView.addSubview(thumbnailImage)
-        
-        photoImageView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
-        
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
-            self.photoImageView.transform = .identity
-        })
     }
 }
 

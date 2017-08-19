@@ -18,4 +18,6 @@ final class Constants {
     
     static let lickabilityIconName = "lickabilityIcon"
     
+    static let emailRecipients = ["jhantelle.belleza@gmail.com"]
+    
 }

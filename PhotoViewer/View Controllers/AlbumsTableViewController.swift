@@ -17,7 +17,7 @@ class AlbumsTableViewController: UITableViewController {
     var chosenAlbum: Int?
     var albumService = AlbumsDataStore()
     
-    fileprivate let pinpointKit = PinpointKit(feedbackRecipients: ["jhantelle.belleza@gmail.com"])
+    fileprivate let pinpointKit = PinpointKit(feedbackRecipients: Constants.emailRecipients)
     
     @IBOutlet weak var navBar: UINavigationItem!
     
@@ -28,12 +28,12 @@ class AlbumsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.registerXib()
         self.setup()
         
         //Reachability
         if HelperClass.isNetworkReachable {
             HelperClass.stopListening()
-            self.registerXib()
             self.getAlbums()
         }
     }
@@ -124,7 +124,7 @@ extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
             self.albumService.getAlbumsFromAPIClient { [unowned self] (data, error) -> Void in
                 guard error == nil else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler:nil)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler:nil)
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion: nil);
                     return

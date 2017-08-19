@@ -122,7 +122,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="detailView" destination="HTs-Vs-F66" id="dAS-lv-MYa"/>
                         <outlet property="photoIdDisplay" destination="Ewq-54-QLF" id="XPd-lO-JoR"/>
                         <outlet property="photoImageView" destination="iud-PH-CST" id="PhH-Dn-vfM"/>
                         <outlet property="photoTitleLabel" destination="aLW-xk-QOD" id="A2K-YZ-4er"/>
