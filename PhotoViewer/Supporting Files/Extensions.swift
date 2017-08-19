@@ -13,7 +13,7 @@ import SDWebImage
 extension AlbumTableViewCell.AlbumsViewModel {
     
     var albumIdTextDisplay: String {
-        let formatString = NSLocalizedString("album %@", comment: "...")
+        let formatString = NSLocalizedString("ALBUM %@", comment: "...")
         return String(format: formatString, String(albumId))
     }
     

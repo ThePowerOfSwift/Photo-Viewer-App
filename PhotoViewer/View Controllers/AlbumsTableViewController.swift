@@ -27,14 +27,16 @@ class AlbumsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.registerXib()
         self.setup()
-        self.getAlbums()
         
-        tableView.tableFooterView = UIView()
-        
+        //Reachability
+        if HelperClass.isNetworkReachable {
+            HelperClass.stopListening()
+            self.registerXib()
+            self.getAlbums()
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -86,6 +88,9 @@ extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
         self.tableView.dataSource = self
         self.tableView.contentMode = .scaleAspectFit
         
+        //MARK: PinpointKit
+        self.tableView.tableFooterView = UIView()
+        
         //MARK: Navigation Title View
         let imageView = UIImageView(image: UIImage(named: Constants.lickabilityIconName))
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 40))
@@ -107,7 +112,10 @@ extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
     //MARK: - Delegate Implementation
     func displaySelectedPhoto(_ photo: Photo) {
         self.chosenPhoto = photo
-        self.performSegue(withIdentifier: Constants.showPhotoSegue, sender: nil)
+        if HelperClass.isNetworkReachable {
+            HelperClass.stopListening()
+            self.performSegue(withIdentifier: Constants.showPhotoSegue, sender: nil)
+        }
     }
     
     //MARK: - Get Albums
@@ -116,7 +124,7 @@ extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
             self.albumService.getAlbumsFromAPIClient { [unowned self] (data, error) -> Void in
                 guard error == nil else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler:nil)
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion: nil);
                     return

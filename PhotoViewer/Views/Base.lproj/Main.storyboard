@@ -18,7 +18,7 @@
         <scene sceneID="Xaz-u7-NIb">
             <objects>
                 <tableViewController modalTransitionStyle="crossDissolve" id="LKS-GM-Q08" customClass="AlbumsTableViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="310" sectionHeaderHeight="28" sectionFooterHeight="28" id="H1Z-KJ-0EY">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="310" sectionHeaderHeight="28" sectionFooterHeight="28" id="H1Z-KJ-0EY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

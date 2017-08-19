@@ -9,6 +9,7 @@ target 'PhotoViewer' do
     pod 'SDWebImage/WebP'
     pod 'SwiftyJSON'
     pod 'PinpointKit', '~> 1.0'
+    pod "SwiftSpinner"
 
   # Pods for PhotoViewer
   target 'PhotoViewerTests' do
