@@ -13,9 +13,11 @@ final class DisplayPhoto {
 
     struct PhotoViewModel {
         var photo: Photo
+        var photoId: String
         
         init(photo: Photo) {
             self.photo = photo
+            self.photoId = String(photo.id)
         }
     }
 
@@ -30,8 +32,5 @@ final class DisplayPhoto {
         imageView.sd_setImage(with: URL(string: url))
         return imageView
     }
-    
-    init() { }
-    
 }
 

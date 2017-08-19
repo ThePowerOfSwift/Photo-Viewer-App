@@ -14,6 +14,7 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var photoTitleLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet var detailView: UIView!
+    @IBOutlet weak var photoIdDisplay: UILabel!
     
     @IBAction func closePopUp(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -36,17 +37,28 @@ class PhotoDetailViewController: UIViewController {
         
         guard let viewModel = viewModel else { return }
         displayPhoto.photoViewModel = viewModel
+        
         photoTitleLabel.text = displayPhoto.photoViewModel?.photo.title
+        photoIdDisplay.text = displayPhoto.photoViewModel?.photoIdTextDisplay
+        
         guard let thumbnailImage = displayPhoto.thumbnailImageView else { return }
         photoImageView.addSubview(thumbnailImage)
         
-        detailView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
+        photoImageView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
         
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
-            self.detailView.transform = .identity
+            self.photoImageView.transform = .identity
         })
-
-        
     }
 }
+
+//MARK: DisplayPhoto View Model
+extension DisplayPhoto.PhotoViewModel {
+    
+    var photoIdTextDisplay: String {
+        let formatString = NSLocalizedString("Photo %@", comment: "...")
+        return String(format: formatString, String(photoId))
+    }
+}
+
 

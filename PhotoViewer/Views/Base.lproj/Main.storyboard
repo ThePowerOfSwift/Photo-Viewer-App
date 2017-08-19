@@ -6,11 +6,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="MyanmarSangamMN.ttc">
-            <string>MyanmarSangamMN</string>
+            <string>MyanmarSangamMN-Bold</string>
         </array>
     </customFonts>
     <scenes>
@@ -72,14 +73,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLW-xk-QOD">
-                                <rect key="frame" x="20" y="393" width="374" height="40.666666666666686"/>
-                                <fontDescription key="fontDescription" name="MyanmarSangamMN" family="Myanmar Sangam MN" pointSize="30"/>
-                                <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oml-iK-Pdv">
-                                <rect key="frame" x="185" y="640" width="44" height="22"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-Oh-ODu">
+                                <rect key="frame" x="30" y="393" width="364" height="46"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Title:" textAlignment="justified" lineBreakMode="clip" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLW-xk-QOD">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="27"/>
+                                        <fontDescription key="fontDescription" name="MyanmarSangamMN-Bold" family="Myanmar Sangam MN" pointSize="20"/>
+                                        <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="photo id" textAlignment="justified" lineBreakMode="clip" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ewq-54-QLF">
+                                        <rect key="frame" x="0.0" y="27" width="364" height="19"/>
+                                        <fontDescription key="fontDescription" name="MyanmarSangamMN-Bold" family="Myanmar Sangam MN" pointSize="14"/>
+                                        <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iud-PH-CST">
+                                <rect key="frame" x="107" y="163" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Bwm-iS-drK"/>
+                                    <constraint firstAttribute="height" constant="200" id="Oup-Ou-s9w"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oml-iK-Pdv">
+                                <rect key="frame" x="188" y="611" width="49" height="42"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="close">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,35 +108,29 @@
                                     <action selector="closePopUp:" destination="NzK-fM-p3j" eventType="touchUpInside" id="hYa-CW-wov"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iud-PH-CST">
-                                <rect key="frame" x="107" y="163" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Bwm-iS-drK"/>
-                                    <constraint firstAttribute="height" constant="200" id="Oup-Ou-s9w"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80365701687116564" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aLW-xk-QOD" secondAttribute="trailing" constant="20" id="7qj-a7-nuV"/>
                             <constraint firstItem="iud-PH-CST" firstAttribute="centerX" secondItem="HTs-Vs-F66" secondAttribute="centerX" id="AmP-Gr-I9H"/>
                             <constraint firstItem="iud-PH-CST" firstAttribute="centerY" secondItem="HTs-Vs-F66" secondAttribute="centerY" constant="-105" id="KVT-Ga-ZOI"/>
-                            <constraint firstItem="oml-iK-Pdv" firstAttribute="leading" secondItem="HTs-Vs-F66" secondAttribute="leading" constant="185" id="KWr-RR-AaJ"/>
-                            <constraint firstAttribute="trailing" secondItem="oml-iK-Pdv" secondAttribute="trailing" constant="185" id="NMX-LE-Byo"/>
-                            <constraint firstItem="aLW-xk-QOD" firstAttribute="top" secondItem="iud-PH-CST" secondAttribute="bottom" constant="30" id="f5p-3x-WKG"/>
-                            <constraint firstItem="aLW-xk-QOD" firstAttribute="leading" secondItem="HTs-Vs-F66" secondAttribute="leading" constant="20" id="qcR-TH-aMV"/>
-                            <constraint firstItem="0rK-vj-2Bv" firstAttribute="top" secondItem="oml-iK-Pdv" secondAttribute="bottom" constant="74" id="wpK-Vo-94P"/>
+                            <constraint firstItem="RlN-Oh-ODu" firstAttribute="leading" secondItem="HTs-Vs-F66" secondAttribute="leading" constant="30" id="PYD-Og-Xfp"/>
+                            <constraint firstAttribute="trailing" secondItem="RlN-Oh-ODu" secondAttribute="trailing" constant="20" id="UU2-vP-G2t"/>
+                            <constraint firstItem="oml-iK-Pdv" firstAttribute="centerX" secondItem="HTs-Vs-F66" secondAttribute="centerX" constant="5.5" id="cVq-eO-FJ1"/>
+                            <constraint firstItem="RlN-Oh-ODu" firstAttribute="top" secondItem="iud-PH-CST" secondAttribute="bottom" constant="30" id="ddf-v7-KgH"/>
+                            <constraint firstItem="oml-iK-Pdv" firstAttribute="centerY" secondItem="HTs-Vs-F66" secondAttribute="centerY" constant="264" id="fka-zB-Xec"/>
+                            <constraint firstItem="oml-iK-Pdv" firstAttribute="width" secondItem="HTs-Vs-F66" secondAttribute="height" multiplier="49:736" id="q3N-ib-Q8p"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailView" destination="HTs-Vs-F66" id="dAS-lv-MYa"/>
+                        <outlet property="photoIdDisplay" destination="Ewq-54-QLF" id="XPd-lO-JoR"/>
                         <outlet property="photoImageView" destination="iud-PH-CST" id="PhH-Dn-vfM"/>
                         <outlet property="photoTitleLabel" destination="aLW-xk-QOD" id="A2K-YZ-4er"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27t-f9-UXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="96"/>
+            <point key="canvasLocation" x="1186.9565217391305" y="95.380434782608702"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3yq-7U-9Bm">

@@ -132,8 +132,8 @@
 		8329D6841F45DFF100A0D436 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				8313DCA71F3C097800716396 /* PhotoViewModel.swift */,
 				83C038711F45052600E61782 /* AlbumTableViewCell.swift */,
+				8313DCA71F3C097800716396 /* PhotoViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";

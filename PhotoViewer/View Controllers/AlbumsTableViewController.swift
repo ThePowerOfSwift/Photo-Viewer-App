@@ -14,6 +14,7 @@ class AlbumsTableViewController: UITableViewController {
     
     var albums: [Album] = []
     var chosenPhoto: Photo?
+    var chosenAlbum: Int?
     var albumService = AlbumsDataStore()
     
     fileprivate let pinpointKit = PinpointKit(feedbackRecipients: ["jhantelle.belleza@gmail.com"])
@@ -94,7 +95,6 @@ extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
         //MARK: Navigation Title View
         let imageView = UIImageView(image: UIImage(named: Constants.lickabilityIconName))
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 40))
-        
         imageView.frame = titleView.bounds
         titleView.addSubview(imageView)
         navBar.titleView = titleView
@@ -134,4 +134,18 @@ extension AlbumsTableViewController: DisplaySelectedPhotoDelegate {
             }
         }
     }
+    
+    //MARK: Header View configurations
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.contentView.alpha = 0.8
+        header.contentView.backgroundColor = UIColor.clear
+        header.textLabel?.textColor = UIColor.darkGray
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Photo Viewer"
+    }
+
 }
