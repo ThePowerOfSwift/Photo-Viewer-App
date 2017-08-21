@@ -1,8 +1,7 @@
 # Photo Viewer
 
-Photos are organized by album. Swipe through the album photos, then click a photo to display more details.
+Photos are organized by album. Swipe through the photos, then click to display more details.
 
-![Launch Screen](http://i.imgur.com/g2neIBvm.png)
 ![Album View](http://i.imgur.com/2LxuSgmm.png)
 ![Select Photo to view detail](http://i.imgur.com/zOBzFwGm.png)
 
