@@ -25,7 +25,6 @@ class AlbumsTableViewController: UITableViewController {
         pinpointKit.show(from: self)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerXib()
@@ -36,6 +35,8 @@ class AlbumsTableViewController: UITableViewController {
             HelperClass.stopListening()
             self.getAlbums()
         }
+        
+        self.tableView.allowsSelection = false
     }
     
     override func didReceiveMemoryWarning() {

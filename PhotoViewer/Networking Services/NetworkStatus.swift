@@ -11,13 +11,12 @@ import Alamofire
 import SwiftSpinner
 
 class NetworkStatus {
-    static let sharedInstance = NetworkStatus()
     
     fileprivate init() { }
     
-    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: Constants.defaultURL)
+    static let reachabilityManager = Alamofire.NetworkReachabilityManager(host: Constants.defaultURL)
     
-    func startNetworkReachabilityObserver() {
+    static func startNetworkReachabilityObserver() {
         reachabilityManager?.listener = { status in
             
             switch status {

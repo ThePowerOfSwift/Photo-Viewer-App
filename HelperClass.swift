@@ -11,14 +11,13 @@ import SwiftSpinner
 
 class HelperClass {
     
-    static let sharedInstance = NetworkStatus.sharedInstance
     static var isNetworkReachable: Bool {
         get {
             return checkReachability()
         }
     }
     
-    static let manager  = sharedInstance.reachabilityManager
+    static let manager  = NetworkStatus.reachabilityManager
     
     fileprivate static func checkReachability() -> Bool {
         guard (manager?.isReachable) == true else {
